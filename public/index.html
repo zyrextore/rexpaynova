@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ZYREX PAY AI</title>
+<meta name="theme-color" content="#05070a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="bg"><div class="bg-orb bg-orb-a"></div><div class="bg-orb bg-orb-b"></div><div class="bg-grid"></div></div>
+
+<section id="authView" class="auth-view">
+  <div class="brand-card">
+    <div class="logo"><span>Z</span></div>
+    <div><h1>ZYREX PAY AI</h1><p>Smart wallet. Smarter assistant.</p></div>
+  </div>
+  <div class="auth-card">
+    <div class="tabs">
+      <button class="tab active" data-mode="login">Masuk</button>
+      <button class="tab" data-mode="register">Daftar</button>
+    </div>
+    <h2 id="authTitle">Selamat datang</h2>
+    <p id="authDesc">Masuk untuk melanjutkan ke dashboard.</p>
+    <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="nama@email.com" autocomplete="email"></div>
+    <div class="field"><label for="password">Password</label><input id="password" type="password" placeholder="Minimal 6 karakter" minlength="6" autocomplete="current-password"></div>
+    <div class="field"><input id="username" class="hidden" placeholder="Username" autocomplete="username"></div>
+    <button id="authBtn" class="primary">Masuk</button>
+    <div class="divider"><span>atau</span></div>
+    <button id="googleBtn" class="secondary">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path fill="#EA4335" d="M9 3.6c1.32 0 2.5.45 3.44 1.34l2.58-2.58C13.46.9 11.4 0 9 0 5.48 0 2.44 2.02.96 4.96l3 2.33C4.66 5.1 6.62 3.6 9 3.6z"/><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84c-.21 1.13-.85 2.08-1.8 2.72l2.9 2.25c1.7-1.57 2.7-3.88 2.7-6.61z"/><path fill="#FBBC05" d="M3.96 10.71a5.4 5.4 0 010-3.42l-3-2.33a9 9 0 000 8.08l3-2.33z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.9-2.25c-.8.54-1.84.86-3.06.86-2.38 0-4.34-1.5-5.05-3.6l-3 2.33C2.44 15.98 5.48 18 9 18z"/></svg>
+      Lanjutkan dengan Google
+    </button>
+    <p id="authMsg" class="message"></p>
+  </div>
+  <p class="auth-foot">Transaksi diproses aman melalui server dan Supabase Auth.</p>
+</section>
+
+<section id="appView" class="app hidden">
+  <aside class="sidebar">
+    <div class="side-brand"><div class="logo small"><span>Z</span></div><b>ZYREX</b></div>
+    <nav>
+      <button class="nav active" data-page="dashboard"><i data-icon="home"></i><span>Dashboard</span></button>
+      <button class="nav" data-page="wallet"><i data-icon="wallet"></i><span>Wallet</span></button>
+      <button class="nav" data-page="topup"><i data-icon="plus"></i><span>Top Up</span></button>
+      <button class="nav" data-page="withdraw"><i data-icon="arrow-up"></i><span>Withdraw</span></button>
+      <button class="nav" data-page="transactions"><i data-icon="history"></i><span>Riwayat</span></button>
+      <button class="nav ai-nav" data-page="ai"><i data-icon="spark"></i><span>ZYREX AI</span></button>
+    </nav>
+    <button id="logoutBtn" class="logout"><i data-icon="logout"></i><span>Keluar</span></button>
+  </aside>
+
+  <main>
+    <header>
+      <div><p class="eyebrow">GOOD DAY</p><h1 id="pageTitle">Dashboard</h1></div>
+      <div class="user-pill"><span id="userInitial">Z</span><div><b id="userName">User</b><small id="userEmail"></small></div></div>
+    </header>
+
+    <div id="dashboard" class="page active">
+      <div class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-top">
+          <div>
+            <p class="hero-label">Available Balance</p>
+            <div class="hero-balance-row">
+              <h2 id="balance" class="balance-value">Rp0</h2>
+              <button class="eye-toggle" type="button" data-role="toggle-balance" aria-label="Sembunyikan saldo">
+                <i data-icon="eye"></i>
+              </button>
+            </div>
+            <small>Saldo dikelola secara aman melalui backend</small>
+          </div>
+          <button class="glass" data-go="topup"><i data-icon="plus"></i> Isi Saldo</button>
+        </div>
+      </div>
+
+      <div class="quick-grid">
+        <button class="quick" data-go="topup"><i data-icon="plus"></i><span>Top Up</span></button>
+        <button class="quick" data-go="withdraw"><i data-icon="arrow-up"></i><span>Withdraw</span></button>
+        <button class="quick" data-go="transactions"><i data-icon="history"></i><span>Riwayat</span></button>
+        <button class="quick" data-go="wallet"><i data-icon="wallet"></i><span>Wallet</span></button>
+      </div>
+
+      <div class="stats">
+        <article><span>TRANSAKSI</span><b id="txCount">0</b><small>Riwayat terbaru</small></article>
+        <article><span>STATUS</span><b class="green">ACTIVE</b><small>Akun terhubung</small></article>
+        <article><span>AI</span><b>READY</b><small>Menunggu API AI</small></article>
+      </div>
+
+      <section class="panel">
+        <div class="section-head"><h3>Aktivitas Terbaru</h3><button data-go="transactions">Lihat semua</button></div>
+        <div id="recentTx" class="empty">Belum ada transaksi.</div>
+      </section>
+
+      <button class="ai-banner" data-go="ai">
+        <div class="ai-banner-icon"><i data-icon="spark"></i></div>
+        <div class="ai-banner-text"><b>Tanya ZYREX AI</b><small>Asisten pintar untuk urusan finansialmu</small></div>
+        <i data-icon="chevron"></i>
+      </button>
+    </div>
+
+    <div id="wallet" class="page">
+      <section class="panel wallet-panel">
+        <p class="hero-label">Total Saldo</p>
+        <div class="big-balance" id="walletBalance">Rp0</div>
+        <p class="muted">Gunakan dashboard ini untuk memantau saldo dan aktivitas secara real-time. Semua data diambil langsung dari server melalui koneksi aman.</p>
+        <div class="wallet-actions">
+          <button class="secondary" data-go="topup"><i data-icon="plus"></i> Isi Saldo</button>
+          <button class="secondary" data-go="withdraw"><i data-icon="arrow-up"></i> Tarik Dana</button>
+        </div>
+      </section>
+    </div>
+
+    <div id="topup" class="page">
+      <section class="panel form-panel">
+        <h3>Top Up</h3>
+        <p class="muted">Masukkan nominal. Invoice diproses server-side.</p>
+        <div class="chip-row" data-role="amount-chips">
+          <button type="button" class="chip" data-amount="50000">Rp50rb</button>
+          <button type="button" class="chip" data-amount="100000">Rp100rb</button>
+          <button type="button" class="chip" data-amount="250000">Rp250rb</button>
+          <button type="button" class="chip" data-amount="500000">Rp500rb</button>
+        </div>
+        <div class="field"><label for="topupAmount">Nominal</label><input id="topupAmount" type="number" min="1000" placeholder="Contoh 50000"></div>
+        <button id="createInvoiceBtn" class="primary">Buat Invoice</button>
+        <div id="invoiceResult" class="result"></div>
+      </section>
+    </div>
+
+    <div id="withdraw" class="page">
+      <section class="panel form-panel">
+        <h3>Withdraw</h3>
+        <p class="muted">Tarik saldo ke rekening atau e-wallet tujuan.</p>
+        <div class="field"><label for="withdrawAmount">Nominal</label><input id="withdrawAmount" type="number" placeholder="Nominal"></div>
+        <div class="field"><label for="withdrawMethod">Metode</label><select id="withdrawMethod"><option>Memuat metode...</option></select></div>
+        <div class="field"><label for="accountNumber">Nomor Akun</label><input id="accountNumber" placeholder="Nomor rekening / e-wallet"></div>
+        <button id="withdrawBtn" class="primary">Lanjutkan</button>
+        <div id="withdrawResult" class="result"></div>
+      </section>
+    </div>
+
+    <div id="transactions" class="page">
+      <section class="panel">
+        <div class="section-head"><h3>Riwayat Transaksi</h3></div>
+        <div id="txList" class="empty">Belum ada transaksi.</div>
+      </section>
+    </div>
+
+    <div id="ai" class="page">
+      <section class="ai-shell">
+        <div class="ai-head">
+          <div class="logo small ai-logo"><span>✦</span></div>
+          <div><h3>ZYREX AI</h3><p>Asisten pintar untuk aplikasi kamu</p></div>
+          <span class="badge">COMING API</span>
+        </div>
+        <div id="chatMessages" class="chat">
+          <div class="bubble bot">Halo! API AI belum dihubungkan. Nanti setelah API kamu diberikan, endpoint backend bisa disambungkan di sini.</div>
+        </div>
+        <div class="composer">
+          <input id="aiInput" placeholder="Tanya apa saja...">
+          <button id="sendAi" aria-label="Kirim"><i data-icon="send"></i></button>
+        </div>
+      </section>
+    </div>
+  </main>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/config.js"></script>
+<script src="/app.js"></script>
+<script src="/enhance.js"></script>
+</body></html>
